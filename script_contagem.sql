@@ -10,3 +10,7 @@ select count(*) from tb_prato;
 -- 1000
 select count(*) from tb_pedido;
 -- 20000
+select count(*) from tb_empresa;
+-- 8
+select count(*) from tb_beneficio;
+-- 9999

@@ -5,8 +5,8 @@ CREATE TABLE `tb_cliente` (
   `id_cliente` int NOT NULL AUTO_INCREMENT,
   `cpf_cliente` varchar(14) NOT NULL,
   `nome_cliente` varchar(150) NOT NULL,
-  `email_cliente` varchar(45) DEFAULT NULL,
   `telefone_cliente` varchar(45) DEFAULT NULL,
+  `email_cliente` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_cliente`)
 ) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -68,3 +68,22 @@ CREATE TABLE `tb_tipo_prato` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `tb_tipo_prato` VALUES (1,'Entrada'),(2,'Principal'),(3,'Sobremesa'),(4,'Bebida');
+
+CREATE TABLE `tb_empresa` (
+  `cod_empresa` int NOT NULL AUTO_INCREMENT,
+  `nome_empresa` varchar(500) NOT NULL,
+  `uf_sede_empresa` varchar(2),
+  PRIMARY KEY (`cod_empresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `tb_beneficio` (
+  `cod_funcionario` int NOT NULL AUTO_INCREMENT,
+  `cod_beneficio` int NOT NULL,
+  `cod_empresa` int NOT NULL,
+  `email_funcionario` varchar(200) NOT NULL,
+  `tipo_beneficio` varchar(45) NOT NULL,
+  `valor_beneficio` varchar(45) NOT NULL,
+  PRIMARY KEY (`cod_funcionario`),
+  KEY `fk_empresa_idx` (`cod_empresa`),
+  CONSTRAINT `fk_empresa` FOREIGN KEY (`cod_empresa`) REFERENCES `tb_empresa` (`cod_empresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
